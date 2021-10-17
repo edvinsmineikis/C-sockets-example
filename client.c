@@ -2,6 +2,7 @@
 #include <sys/socket.h> // For sockets
 #include <sys/types.h> // For socket types
 #include <arpa/inet.h> // For sockaddr_in
+#include <unistd.h> // For closing sockets
 
 int main() {
 
@@ -58,6 +59,8 @@ int main() {
         for(len = 0; buff[len] != '\0'; len++);
         send(sockfd, buff, len, 0);
     }
+
+    close(sockfd);
 
     return 0;
 }
